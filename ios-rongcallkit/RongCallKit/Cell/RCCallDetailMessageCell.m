@@ -101,21 +101,27 @@
     }
 
     if (callMessage.mediaType == RCCallMediaVideo && self.messageDirection == MessageDirection_RECEIVE) {
-        self.mediaTypeIcon.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/video_left.png"];
+        self.mediaTypeIcon.image = [[RCCallKitUtility imageFromVoIPBundle:@"voip/video_left.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.mediaTypeIcon.tintColor = [UIColor whiteColor];
     } else if (callMessage.mediaType == RCCallMediaVideo && self.messageDirection == MessageDirection_SEND) {
-        self.mediaTypeIcon.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/video_right.png"];
+        self.mediaTypeIcon.image = [[RCCallKitUtility imageFromVoIPBundle:@"voip/video_right.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.mediaTypeIcon.tintColor = [UIColor whiteColor];
     } else if (callMessage.mediaType == RCCallMediaAudio && self.messageDirection == MessageDirection_RECEIVE &&
                callMessage.duration > 0) {
-        self.mediaTypeIcon.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_left.png"];
+        self.mediaTypeIcon.image = [[RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_left.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.mediaTypeIcon.tintColor = [UIColor whiteColor];
     } else if (callMessage.mediaType == RCCallMediaAudio && self.messageDirection == MessageDirection_RECEIVE &&
                callMessage.duration <= 0) {
-        self.mediaTypeIcon.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_up_left.png"];
+        self.mediaTypeIcon.image = [[RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_up_left.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.mediaTypeIcon.tintColor = [UIColor whiteColor];
     } else if (callMessage.mediaType == RCCallMediaAudio && self.messageDirection == MessageDirection_SEND &&
                callMessage.duration > 0) {
-        self.mediaTypeIcon.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_right.png"];
+        self.mediaTypeIcon.image = [[RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_right.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.mediaTypeIcon.tintColor = [UIColor whiteColor];
     } else if (callMessage.mediaType == RCCallMediaAudio && self.messageDirection == MessageDirection_SEND &&
                callMessage.duration <= 0) {
-        self.mediaTypeIcon.image = [RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_up_right.png"];
+        self.mediaTypeIcon.image = [[RCCallKitUtility imageFromVoIPBundle:@"voip/audio_receiver_up_right.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.mediaTypeIcon.tintColor = [UIColor whiteColor];
     }
 
     CGSize __textSize = [RCKitUtility
@@ -149,15 +155,15 @@
         self.bubbleBackgroundView.frame = CGRectMake(0, 0, __bubbleSize.width, __bubbleSize.height);
 
         self.mediaTypeIcon.frame = CGRectMake(14, 10, 20, 20);
-        self.textLabel.textColor = dynamic_color(0x262626, 0xe0e0e0);
+        self.textLabel.textColor = dynamic_color(0xffffff, 0xffffff);
         self.textLabel.frame =
             CGRectMake(CGRectGetMaxX(self.mediaTypeIcon.frame) + 7, __bubbleHeight / 2 - __labelSize.height / 2,
                        __labelSize.width, __labelSize.height);
         self.bubbleBackgroundView.image = [RCKitUtility imageNamed:@"chat_from_bg_normal" ofBundle:@"RongCloud.bundle"];
         UIImage *image = self.bubbleBackgroundView.image;
         self.bubbleBackgroundView.image = [self.bubbleBackgroundView.image
-            resizableImageWithCapInsets:UIEdgeInsetsMake(image.size.height * 0.8, image.size.width * 0.8,
-                                                         image.size.height * 0.2, image.size.width * 0.2)];
+            resizableImageWithCapInsets:UIEdgeInsetsMake(image.size.height * 0.5, image.size.width * 0.5,
+                                                         image.size.height * 0.5, image.size.width * 0.5)];
     } else {
         messageContentViewRect.size.width = __bubbleSize.width;
         messageContentViewRect.size.height = __bubbleSize.height;
@@ -167,7 +173,7 @@
         self.messageContentView.frame = messageContentViewRect;
 
         self.bubbleBackgroundView.frame = CGRectMake(0, 0, __bubbleSize.width, __bubbleSize.height);
-        self.textLabel.textColor = dynamic_color(0x3f81bc,0xe0e0e0);
+        self.textLabel.textColor = dynamic_color(0xffffff,0xffffff);
         self.textLabel.frame = CGRectMake(10, 20 - __labelSize.height / 2, __labelSize.width, __labelSize.height);
         self.mediaTypeIcon.frame = CGRectMake(CGRectGetMaxX(self.textLabel.frame) + 7, 10, 20, 20);
         self.bubbleBackgroundView.image = [RCKitUtility imageNamed:@"chat_to_bg_normal" ofBundle:@"RongCloud.bundle"];
@@ -176,8 +182,8 @@
         statusFrame.origin.x = statusFrame.origin.x + 5;
         [self.statusContentView setFrame:statusFrame];
         self.bubbleBackgroundView.image = [self.bubbleBackgroundView.image
-            resizableImageWithCapInsets:UIEdgeInsetsMake(image.size.height * 0.8, image.size.width * 0.2,
-                                                         image.size.height * 0.2, image.size.width * 0.8)];
+            resizableImageWithCapInsets:UIEdgeInsetsMake(image.size.height * 0.5, image.size.width * 0.5,
+                                                         image.size.height * 0.5, image.size.width * 0.5)];
     }
     // self.bubbleBackgroundView.image = image;
 }
