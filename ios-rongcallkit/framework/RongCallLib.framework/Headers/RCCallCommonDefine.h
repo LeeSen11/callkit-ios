@@ -236,6 +236,14 @@ typedef NS_ENUM(NSInteger, RCCallDisconnectReason) {
  */
 typedef NS_ENUM(NSInteger, RCVideoProfile) {
     /*!
+     256x144, 15fps, 100kbps
+     */
+    RC_VIDEO_PROFILE_144P = 10,
+    /*!
+     176x144, 10fps, 150kbps
+    */
+    RC_VIDEO_PROFILE_144P_1 = 11,
+    /*!
      320x240, 15fps, 200kbps
      */
     RC_VIDEO_PROFILE_240P = 20,
@@ -244,17 +252,43 @@ typedef NS_ENUM(NSInteger, RCVideoProfile) {
      */
     RC_VIDEO_PROFILE_360P = 30,
     /*!
+     640x360, 15fps, 400kbps
+     */
+    RC_VIDEO_PROFILE_360P_1 = 40,
+    /*!
      640x480, 15fps, 500kbps
      */
-    RC_VIDEO_PROFILE_480P = 40,
+    RC_VIDEO_PROFILE_480P = 50,
+    /*!
+     720x480, 15fps, 600kbps
+     */
+    RC_VIDEO_PROFILE_480P_1 = 60,
     /*!
      1280x720, 15fps, 1000kbps
      */
-    RC_VIDEO_PROFILE_720P = 50,
+    RC_VIDEO_PROFILE_720P = 70,
     /*!
      默认的视频参数
      */
     RC_VIDEO_PROFILE_DEFAULT = RC_VIDEO_PROFILE_480P,
+};
+
+/*!
+ 视频编码方式
+ */
+typedef NS_ENUM(NSInteger, RCVideoCodecType) {
+    /*!
+     H264
+     */
+    RC_VIDEO_CODEC_H264,
+    /*!
+     VP8
+     */
+    RC_VIDEO_CODEC_VP8,
+    /*!
+     VP9
+     */
+    RC_VIDEO_CODEC_VP9
 };
 
 /*!
@@ -285,6 +319,20 @@ typedef NS_ENUM(NSInteger, RCCallStatus) {
      已经挂断
      */
     RCCallHangup = 5,
+};
+
+/*!
+ 用户类型
+ */
+typedef NS_ENUM(NSInteger, RCCallUserType) {
+    /*!
+     正常用户
+     */
+    RCCallUserNormal = 1,
+    /*!
+     观察者
+     */
+    RCCallUserObserver = 2
 };
 
 #endif /* RCCallCommonDefine_h */

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0ADDC74A21B66A6300883EB5 /* RCMultiCallInviteNewUserDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ADDC74921B66A6200883EB5 /* RCMultiCallInviteNewUserDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CA594E823B9E42900605F28 /* RongCallLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA594E523B9E42900605F28 /* RongCallLib.framework */; };
+		2CA594E923B9E42900605F28 /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA594E623B9E42900605F28 /* RongIMKit.framework */; };
+		2CA594EA23B9E42900605F28 /* RongIMLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA594E723B9E42900605F28 /* RongIMLib.framework */; };
 		390467EF20738446007CE8DE /* UICollectionView+BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 390467ED20738446007CE8DE /* UICollectionView+BackgroundView.m */; };
 		390467F020738446007CE8DE /* UICollectionView+BackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = 390467EE20738446007CE8DE /* UICollectionView+BackgroundView.h */; };
 		3933DF5C206117A100C80615 /* KxCallMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933DF5A206117A100C80615 /* KxCallMenu.m */; };
@@ -24,7 +27,6 @@
 		A68AFAEA1CCEFF5B00F16B3D /* RCCallDetailMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68AFAE61CCEFF5B00F16B3D /* RCCallDetailMessageCell.m */; };
 		A68AFAEB1CCEFF5B00F16B3D /* RCCallTipMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A68AFAE71CCEFF5B00F16B3D /* RCCallTipMessageCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A68AFAEC1CCEFF5B00F16B3D /* RCCallTipMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68AFAE81CCEFF5B00F16B3D /* RCCallTipMessageCell.m */; };
-		A68AFAEE1CCF06C300F16B3D /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68AFAED1CCF06C200F16B3D /* RongIMKit.framework */; };
 		A6BE1A521CCE561200FF6BF7 /* RongCallKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BE1A511CCE561200FF6BF7 /* RongCallKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6BE1B201CCEFAAC00FF6BF7 /* RCCallMultiCallUserCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BE1AFE1CCEFAAC00FF6BF7 /* RCCallMultiCallUserCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6BE1B211CCEFAAC00FF6BF7 /* RCCallMultiCallUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE1AFF1CCEFAAC00FF6BF7 /* RCCallMultiCallUserCell.m */; };
@@ -52,8 +54,6 @@
 		A6BE1B391CCEFAAC00FF6BF7 /* RCCallFloatingBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE1B1B1CCEFAAC00FF6BF7 /* RCCallFloatingBoard.m */; };
 		A6BE1B3A1CCEFAAC00FF6BF7 /* RCCallKitUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = A6BE1B1C1CCEFAAC00FF6BF7 /* RCCallKitUtility.h */; };
 		A6BE1B3B1CCEFAAC00FF6BF7 /* RCCallKitUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE1B1D1CCEFAAC00FF6BF7 /* RCCallKitUtility.m */; };
-		A6BE1B481CCEFBC700FF6BF7 /* RongCallLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BE1B461CCEFBC700FF6BF7 /* RongCallLib.framework */; };
-		A6BE1B491CCEFBC700FF6BF7 /* RongIMLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BE1B471CCEFBC700FF6BF7 /* RongIMLib.framework */; };
 		F8235CDD1CE5B2A100C95B26 /* RCloudImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = F8235CD91CE5B2A100C95B26 /* RCloudImageLoader.h */; };
 		F8235CDE1CE5B2A100C95B26 /* RCloudImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = F8235CDA1CE5B2A100C95B26 /* RCloudImageView.h */; };
 		F8235CDF1CE5B2A100C95B26 /* RCUserInfoCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8235CDB1CE5B2A100C95B26 /* RCUserInfoCacheManager.h */; };
@@ -63,6 +63,9 @@
 
 /* Begin PBXFileReference section */
 		0ADDC74921B66A6200883EB5 /* RCMultiCallInviteNewUserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMultiCallInviteNewUserDelegate.h; sourceTree = "<group>"; };
+		2CA594E523B9E42900605F28 /* RongCallLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongCallLib.framework; path = framework/RongCallLib.framework; sourceTree = "<group>"; };
+		2CA594E623B9E42900605F28 /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = framework/RongIMKit.framework; sourceTree = "<group>"; };
+		2CA594E723B9E42900605F28 /* RongIMLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMLib.framework; path = framework/RongIMLib.framework; sourceTree = "<group>"; };
 		390467ED20738446007CE8DE /* UICollectionView+BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+BackgroundView.m"; sourceTree = "<group>"; };
 		390467EE20738446007CE8DE /* UICollectionView+BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+BackgroundView.h"; sourceTree = "<group>"; };
 		3933DF5A206117A100C80615 /* KxCallMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxCallMenu.m; sourceTree = "<group>"; };
@@ -79,7 +82,6 @@
 		A68AFAE61CCEFF5B00F16B3D /* RCCallDetailMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallDetailMessageCell.m; sourceTree = "<group>"; };
 		A68AFAE71CCEFF5B00F16B3D /* RCCallTipMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallTipMessageCell.h; sourceTree = "<group>"; };
 		A68AFAE81CCEFF5B00F16B3D /* RCCallTipMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallTipMessageCell.m; sourceTree = "<group>"; };
-		A68AFAED1CCF06C200F16B3D /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = framework/RongIMKit.framework; sourceTree = "<group>"; };
 		A6BE1A4E1CCE561200FF6BF7 /* RongCallKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RongCallKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BE1A511CCE561200FF6BF7 /* RongCallKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RongCallKit.h; sourceTree = "<group>"; };
 		A6BE1A531CCE561200FF6BF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,8 +111,6 @@
 		A6BE1B1B1CCEFAAC00FF6BF7 /* RCCallFloatingBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallFloatingBoard.m; sourceTree = "<group>"; };
 		A6BE1B1C1CCEFAAC00FF6BF7 /* RCCallKitUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCallKitUtility.h; sourceTree = "<group>"; };
 		A6BE1B1D1CCEFAAC00FF6BF7 /* RCCallKitUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCallKitUtility.m; sourceTree = "<group>"; };
-		A6BE1B461CCEFBC700FF6BF7 /* RongCallLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongCallLib.framework; path = framework/RongCallLib.framework; sourceTree = "<group>"; };
-		A6BE1B471CCEFBC700FF6BF7 /* RongIMLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMLib.framework; path = framework/RongIMLib.framework; sourceTree = "<group>"; };
 		F8235CD91CE5B2A100C95B26 /* RCloudImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCloudImageLoader.h; path = Header/RCloudImageLoader.h; sourceTree = "<group>"; };
 		F8235CDA1CE5B2A100C95B26 /* RCloudImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCloudImageView.h; path = Header/RCloudImageView.h; sourceTree = "<group>"; };
 		F8235CDB1CE5B2A100C95B26 /* RCUserInfoCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCUserInfoCacheManager.h; path = Header/RCUserInfoCacheManager.h; sourceTree = "<group>"; };
@@ -123,9 +123,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6BE1B491CCEFBC700FF6BF7 /* RongIMLib.framework in Frameworks */,
-				A6BE1B481CCEFBC700FF6BF7 /* RongCallLib.framework in Frameworks */,
-				A68AFAEE1CCF06C300F16B3D /* RongIMKit.framework in Frameworks */,
+				2CA594E823B9E42900605F28 /* RongCallLib.framework in Frameworks */,
+				2CA594EA23B9E42900605F28 /* RongIMLib.framework in Frameworks */,
+				2CA594E923B9E42900605F28 /* RongIMKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +278,9 @@
 		A6BE1B451CCEFBAC00FF6BF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A68AFAED1CCF06C200F16B3D /* RongIMKit.framework */,
-				A6BE1B461CCEFBC700FF6BF7 /* RongCallLib.framework */,
-				A6BE1B471CCEFBC700FF6BF7 /* RongIMLib.framework */,
+				2CA594E523B9E42900605F28 /* RongCallLib.framework */,
+				2CA594E623B9E42900605F28 /* RongIMKit.framework */,
+				2CA594E723B9E42900605F28 /* RongIMLib.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -384,6 +384,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = A6BE1A441CCE561200FF6BF7;
@@ -503,7 +504,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -631,7 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -664,7 +665,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BITCODE_GENERATION_MODE = bitcode;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;

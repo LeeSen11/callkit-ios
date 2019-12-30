@@ -61,6 +61,14 @@
 - (void)remoteUserDidChangeMediaType:(NSString *)userId mediaType:(RCCallMediaType)mediaType;
 
 /*!
+ 对端用户开启或关闭了d麦克风的状态
+ 
+ @param disabled  是否关闭麦克风
+ @param userId    用户ID
+ */
+- (void)remoteUserDidDisableMicrophone:(BOOL)disabled byUser:(NSString *)userId;
+
+/*!
  对端用户开启或关闭了摄像头的状态
 
  @param disabled  是否关闭摄像头
@@ -75,6 +83,22 @@
  @param reason 挂断的原因
  */
 - (void)remoteUserDidLeft:(NSString *)userId reason:(RCCallDisconnectReason)reason;
+
+/*!
+ 对端用户发布自定义媒体流
+
+ @param streamId 自定义流ID
+ @param streamTag 自定义流标签
+ @param reason 媒体类型
+*/
+- (void)remoteUserDidPublishCustomMediaStream:(NSString *)streamId streamTag:(NSString *)tag mediaType:(RCCallMediaType)mediaType;
+
+/*!
+ 对端用户取消发布自定义媒体流
+ 
+ @param streamId 自定义流ID
+*/
+- (void)remoteUserDidCancelPublishCustomMediaStream:(NSString *)streamId;
 
 /*!
  彩铃
@@ -105,9 +129,26 @@
  当前通话网络状态的回调，该回调方法每两秒触发一次
 
  @param txQuality   上行网络质量
- @param rxQuality   下行网络质量
+ @param rxQuality   下行网络质量, 接收到的所有远端用户网络质量的平均值
  */
 - (void)networkTxQuality:(RCCallQuality)txQuality rxQuality:(RCCallQuality)rxQuality;
+
+/*!
+ 当前通话网络状态的回调，该回调方法每两秒触发一次
+ 
+ @param txQuality   上行网络质量
+ @param rxQuality   下行网络质量, 接收到的某个远端用户的网络质量
+ @param userID      远端用户
+ */
+- (void)networkTxQuality:(RCCallQuality)txQuality rxQuality:(RCCallQuality)rxQuality remoteUserID:(NSString *)userID;
+
+/*!
+ 当前通话某用户声音音量回调，该回调方法每两秒触发一次
+
+ @param leavel   声音级别: 0~9, 0为无声, 依次变大
+ @param userID   用户ID, 本端用户ID(发送音量) 或 远端用户ID(接收音量)
+*/
+- (void)audioLevel:(NSInteger)leavel userID:(NSString *)userID;
 
 /*!
  当前通话本地视频数据, 用于GPU滤镜处理, 同步返回处理后的同一sampleBuffer对象, 需要本地视频数据时首先调用 RCCallClient.h 中 - (void)setEnableBeauty:(BOOL)enable方法, 该方法默认为NO.
@@ -116,14 +157,11 @@
  */
 - (CMSampleBufferRef)processVideoFrame:(CMSampleBufferRef)sampleBuffer;
 
-#pragma mark - Meeting
-- (void)onWhiteBoard:(NSString *)url;
-
-- (void)onNotifyHostControlUserDevice:(NSString *)userId host:(NSString *)hostId deviceType:(NSInteger)dType open:(BOOL)isOpen;
-
-- (void)onNotifyUpgradeObserverToNormalUser:(NSString *)userId;
-
-- (void)onNotifyAnswerObserverRequestBecomeNormalUser:(NSString *)userId;
+/*!
+ 当前通话视频通话时, 收到远端用户的第一个视频帧的回调.
+ @param userId   远端用户ID
+ */
+- (void)receiveRemoteUserVideoFirstKeyFrame:(NSString *)userId;
 
 @end
 
@@ -206,11 +244,6 @@
 @property(nonatomic, assign) RCCallDisconnectReason disconnectReason;
 
 /*!
- Blink用户类型
- */
-@property (nonatomic, assign) NSInteger blinkUserType;
-
-/*!
  设置通话状态变化的监听器
 
  @param delegate 通话状态变化的监听器
@@ -253,13 +286,15 @@
  */
 - (void)hangup;
 
-- (void)handup;
+/*!
+ 观察者身份用户, 发布自己的音视频资源
+ */
+- (void)publishMediaResource:(RCCallMediaType)mediaType complete:(void(^)(BOOL isSuccess, NSInteger code))block;
 
-- (void)whiteBoard;
-
-- (void)answerHostControlUserDevice:(NSString *)userID withDeviceType:(NSInteger)dType open:(BOOL)isOpen status:(BOOL)isAccept;
-
-- (void)answerUpgradeObserverToNormalUser:(NSString *)userID status:(BOOL)isAccept;
+/*!
+ 正常身份用户, 取消发布自己的音视频资源
+ */
+- (void)unPublishMediaResource:(void(^)(BOOL isSuccess, NSInteger code))block;
 
 /*!
  邀请用户加入通话
@@ -268,6 +303,15 @@
  @param type       建议被邀请者使用的媒体类型
  */
 - (void)inviteRemoteUsers:(NSArray *)userIdList mediaType:(RCCallMediaType)type;
+
+/*!
+ 邀请用户加入通话
+ 
+ @param userIdList 用户ID列表
+ @param observerIdList 需要以观察者身份加入房间的用户ID列表
+ @param type       建议被邀请者使用的媒体类型
+ */
+- (void)inviteRemoteUsers:(NSArray *)userIdList observerIdList:(NSArray *)observerIdList mediaType:(RCCallMediaType)type;
 
 /*!
  设置用户所在的视频View

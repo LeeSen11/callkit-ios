@@ -10,6 +10,9 @@
 #import "RCCallSession.h"
 #import "RCCallClientSignalServer.h"
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+
+#define kRongCallLibVersion @"V2.10.2_20191218150822_pub_dev_9d80bd6"
 
 /*!
  CallLib全局通话呼入的监听器
@@ -37,6 +40,23 @@
                                mediaType:(RCCallMediaType)mediaType
                               userIdList:(NSArray *)userIdList
                                 userDict:(NSDictionary *)userDict;
+
+/*!
+接收到通话呼入的远程通知的回调
+
+@param callId        呼入通话的唯一值
+@param inviterUserId 通话邀请者的UserId
+@param mediaType     通话的媒体类型
+@param userIdList    被邀请者的UserId列表
+@param userDict      远程推送包含的其他扩展信息
+@param isVoIPPush 是否 VoIP 推送
+*/
+- (void)didReceiveCallRemoteNotification:(NSString *)callId
+                           inviterUserId:(NSString *)inviterUserId
+                               mediaType:(RCCallMediaType)mediaType
+                              userIdList:(NSArray *)userIdList
+                                userDict:(NSDictionary *)userDict
+                              isVoIPPush:(BOOL)isVoIPPush;
 
 /*!
  接收到取消通话的远程通知的回调
@@ -93,6 +113,28 @@
              sessionDelegate:(id<RCCallSessionDelegate>)delegate
                        extra:(NSString *)extra;
 
+
+/*!
+ 发起一个通话
+ 
+ @param conversationType 会话类型
+ @param targetId         目标会话ID
+ @param userIdList       邀请的用户ID列表
+ @param observerIdList   需要以观察者身份加入房间的用户ID列表
+ @param type             发起的通话媒体类型
+ @param delegate         通话监听
+ @param extra            附件信息
+ 
+ @return 呼出的通话实体
+ */
+- (RCCallSession *)startCall:(RCConversationType)conversationType
+                    targetId:(NSString *)targetId
+                          to:(NSArray *)userIdList
+              observerIdList:(NSArray *)observerIdList
+                   mediaType:(RCCallMediaType)type
+             sessionDelegate:(id<RCCallSessionDelegate>)delegate
+                       extra:(NSString *)extra;
+
 /*!
  当前会话类型是否支持音频通话
 
@@ -114,16 +156,9 @@
 /**
  * 设置本地视频属性，可用此接口设置本地视频分辨率。
  *
- * @param profile profile
+ * @param profile 通话视频参数
  */
 - (void)setVideoProfile:(RCVideoProfile)profile;
-
-/**
- 设置码率
-
- @param bitRate 码率 单位 kbps
- */
-- (void)setBitRate:(NSUInteger)rate;
 
 /**
  设置本地视频属性，可用此接口设置本地视频分辨率，设置宽和高替换
@@ -134,11 +169,32 @@
 - (void)setVideoProfile:(RCVideoProfile)profile swapWidthAndHeight:(BOOL)swapWidthAndHeight;
 
 /**
+ * 设置本地视频属性，可用此接口设置本地视频方向
+ *
+ * @param orientation 视频方向, 默认: AVCaptureVideoOrientationPortrait
+ */
+- (void)setVideoOrientation:(AVCaptureVideoOrientation)orientation;
+
+/**
+ 设置码率
+ 
+ @param bitRate 码率 单位 kbps
+ */
+- (void)setBitRate:(NSUInteger)rate;
+
+/**
  设置本地视频属性，是否使用默认美颜
  
  @param enable YES:使用  NO:不使用(默认)
  */
 - (void)setEnableBeauty:(BOOL)enable;
+
+/**
+ 设置视频编码方式
+
+ @param type
+ */
+- (void)setVideoCodecType:(RCVideoCodecType)type;
 
 /*!
  设置外部信令服务器代理
@@ -160,4 +216,11 @@
  是否生成通话记录消息，默认为YES
  */
 @property(nonatomic, assign) BOOL enableCallSummary;
+
+/*!
+ 是否打开苹果 PushKit 推送，该推送可以直接激活 App，注：iOS 13 以后 PushKit 必须结合苹果 CallKit.framework 进行使用，否则无法正常处理 VoIP 相关推送逻辑，如果设置为 NO 则使用普通 APNS 消息推送来处理音视频信令逻辑，默认关闭。打开之后 App 默认需要自行处理 VoIP 推送唤起 CallKit.framework 的逻辑。
+ */
+- (void)setApplePushKitEnable:(BOOL)enable;
+
+
 @end
